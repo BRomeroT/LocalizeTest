@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>Localize</title>
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/Localize.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=es-MX"></script>
+    <!-- Bing Map Control references -->
+    <script type="text/javascript" src="ms-appx:///Bing.Maps.JavaScript//js/veapicore.js"></script>
+    <script src="js/jquery-2.0.3.min.js" type="text/javascript"></script>
+    <script src="js/jquery.xdomainajax.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="InicioPage" data-role="page">
+        <div data-role="header">
+            <img src="img/logoLocalize.png" alt="Localize" />
+        </div>
+        <div id="MenuPrincipal" data-role="content" style="align-content: center; text-align: center;">
+            <img src="img/User.png" alt="Usuario" style="vertical-align: middle;" />
+            <input type="text" id="Usuario" style="width: 200px;" value="" autofocus="autofocus" autocomplete="on" required="required" title="Escriba el usuario asignado para Localize" placeholder="Usuario" /><br />
+            <img src="img/Password.png" alt="Contraseña" style="vertical-align: middle;" />
+            <input type="password" id="Contrasena" style="width: 200px;" value="" required="required" title="Escriba la contraseña" placeholder="Contraseña" />
+            <img src="img/Login.png" id="Login" alt="Entrar" style="cursor: pointer; vertical-align: middle; display: none;" />
+        </div>
+        <div id="Publicidad" data-role="Publicidad">
+        </div>
+    </div>
+    <div id="MapaPage" data-role="page" style="display: none">
+        <div id="header" data-role="header">
+            <img src="img/logoLocalize.png" alt="Localize" />
+        </div>
+        <div id="mapa" data-role="content"></div>
+        <div id="info" data-role="info">
+            <select id="unidadesSelect" style="width: 100%"></select>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/Mapa.js"></script>
+
+    <script type="text/javascript" src="js/Datos.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).bind("mobileinit", function () {
+                $.mobile.allowCrossDomainPages = true;
+            });
+            $.support.cors = true;
+
+            //Mantiene el mapa en el tamaño necesario del navegador
+            $("#mapa").height($(window).height() - $("#header").height() - $("#info").height() - 50);
+            $(window).resize(function () {
+                $("#mapa").height($(window).height() - $("#header").height() - $("#info").height() - 50);
+            });
+            //Mantiene los tiles en el tamaño necesario del navegador
+            $("#MenuPrincipal").height(($(window).height() - $("#header").height()) - ($("#Publicidad").height() + 30));
+            $(window).resize(function () {
+                $("#MenuPrincipal").height(($(window).height() - $("#header").height()) - ($("#Publicidad").height() + 30));
+            });
+
+            Mapa.Inicializar("mapa", Datos.EventosMapa, function () {
+                ///Solo permite iniciar seisión hasta que el mapa esté listo
+                $("#Contrasena").keyup(function (e) {
+                    if (e.keyCode == 13) $("#Login").click();
+                });
+                $("#Login").click(function () {
+                    Datos.Autentificar($("#Usuario").val(), $("#Contrasena").val(), function (autentificado, flotilla) {
+                        if (autentificado) {
+                            Datos.CargarFlotilla(flotilla);
+                            MostrarMapa();
+                        } else
+                            alert("Usuario y contraseña inválido");
+                    });
+                });
+                $("#Contrasena").animate({ width: '165px' },0);
+                $("#Login").show();
+            }, function (e) {
+                alert('No hay conexión con el provedor del mapa');
+            });
+
+            Datos.Eventos = {
+                UnidadSeleccionada: function (unidad) {
+
+                },
+                UnidadesListas: function () {
+
+                }
+            };
+
+            function MostrarMapa() {
+                $('#InicioPage').hide('Fade');
+                $('#MapaPage').show('Drop');
+            }
+        });
+    </script>
+</body>
+</html>

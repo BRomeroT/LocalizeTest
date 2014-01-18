@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<widget  xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+         version="2.0.0">
+  <name>Localize</name>
+  <description>
+    Cliente móvil Localize
+  </description>
+  <author email="contacto@sysne.com.mx" href="http://www.climapuebla.org.mx">
+    Localize
+  </author>
+  
+  <content src="index.html" />
+  
+  <preference name="fullscreen" value="true" /> 
+  <!--<preference name="Orientation" value="portrait" />-->
+  <access origin="*"/>
+  <preference name="webviewbounce" value="false" />
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="BackgroundColor" value="0xf2f2f2"/>
+
+  <!--PhoneGap build solo soporta hasta la 3.1.0, pero si se desea Blackberry baja a la 2.9.0-->
+  <!--<preference name="phonegap-version" value="3.3.0" />-->
+
+  <!--Features-->
+  <feature name="http://api.phonegap.com/1.0/network"/>
+  <feature name="http://api.phonegap.com/1.0/geolocation"/>
+
+  <!-- Icons -->
+  <icon src="icon.png" />
+  
+  <icon src="icons/ios/icon.png" width="57" height="57" />
+  <icon src="icons/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
+  <icon src="icons/ios/icon_at_2x.png" gap:platform="ios" width="114" height="114" />
+  <icon src="icons/ios/icon-72_at_2x.png" gap:platform="ios" width="144" height="144" />
+  
+  <icon src="icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
+  <icon src="icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
+  <icon src="icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
+  <icon src="icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+
+  <icon src="icons/bb/icon.png" gap:platform="blackberry" />
+  <icon src="icons/bb/icon_hover.png" gap:platform="blackberry" gap:state="hover"/>
+  
+  <icon src="icons/winphone/icon.png" gap:platform="winphone" />
+  <icon src="icons/winphone/tileicon.png" gap:platform="winphone" gap:role="background" />
+  
+  <icon src="icons/webos/icon.png" gap:platform="webos" />
+  <icon src="icons/webos/miniicon.png" gap:platform="webos" gap:role="mini" />
+
+  <!-- Splash Screens -->
+  <gap:splash src="splash.png" />
+
+  <gap:splash src="splash/ios/Default.png" gap:platform="ios" width="320" height="480" />
+  <gap:splash src="splash/ios/Default_at_2x.png" gap:platform="ios" width="640" height="960" />
+  <gap:splash src="splash/ios/Default_iphone5.png" gap:platform="ios" width="640" height="1136" />
+  <gap:splash src="splash/ios/Default-Landscape.png" gap:platform="ios" width="1024" height="748" />
+  <gap:splash src="splash/ios/Default-Portrait.png" gap:platform="ios" width="768" height="1004" />
+  <gap:splash src="splash/ios/Default-Landscape_at_2x.png" gap:platform="ios" width="2048" height="1496" />
+  <gap:splash src="splash/ios/Default-Portrait_at_2x.png" gap:platform="ios" width="1536" height="2008" />
+    
+  <gap:splash src="splash/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
+  <gap:splash src="splash/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
+  <gap:splash src="splash/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
+  <gap:splash src="splash/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+  
+  <gap:splash src="splash/bb/splash.png" gap:platform="blackberry" />
+  
+  <gap:splash src="splash/winphone/splash.jpg" gap:platform="winphone" />
+</widget>

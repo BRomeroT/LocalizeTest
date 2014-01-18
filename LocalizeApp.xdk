@@ -1,0 +1,31 @@
+{
+  "project": {
+    "projectSettingsVersion": "1.0",
+    "creationData": {
+      "type": "Import",
+      "src": "C:\\Users\\Benjamín\\Documents\\Visual Studio 2013\\Projects\\Apps\\Localize.v2\\Localize.www",
+      "projectGuid": "418f3d50-7245-48ae-b56c-2e214dec4652",
+      "lastModifiedDate": 1390077871375,
+      "creationDate": 1390077871338
+    },
+    "projectFiles": {},
+    "projectDirectories": {},
+    "libraries": [
+      {
+        "name": "Cordova",
+        "version": "2.9.0",
+        "data": {
+          "default": true
+        }
+      },
+      {
+        "name": "intelXDK",
+        "version": "4.0.0",
+        "data": {
+          "default": true
+        }
+      }
+    ],
+    "services": []
+  }
+}
