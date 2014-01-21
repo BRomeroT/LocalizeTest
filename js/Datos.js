@@ -8,6 +8,8 @@
 
     Eventos: null,
 
+    pinDevice: null,
+
     EventosMapa: {
         Pin_Click: function (pin) {
             Datos.SeleccionarPin(pin)
@@ -83,6 +85,7 @@
 
     MostrarUnidad: function (unidadId) {
         Mapa.LimpiarDatos();
+        if (Datos.pinDevice != null) Mapa.MostrarPin(Datos.pinDevice);
         var unidad = Datos.Unidades[unidadId];
         var Params = {};
         Params.type = 'GET';
@@ -103,4 +106,15 @@
         });
     },
 
+    MonitorearDispositivo: function () {
+        var watchID = navigator.geolocation.watchPosition(
+            function (position) {
+                if (Datos.pinDevice == null) {
+                    Datos.pinDevice = Mapa.AgregarPin('<img src="img/Target.png" alt="Yo" />', position.coords.latitude, position.coords.longitude);
+                } else {
+                    Mapa.MoverPin(Datos.pinDevice);
+                }
+            }, function (error) {
+            }, { timeout: 30000 });
+    }
 }

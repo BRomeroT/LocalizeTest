@@ -15,6 +15,7 @@
     <script type="text/javascript" src="ms-appx:///Bing.Maps.JavaScript//js/veapicore.js"></script>
     <script src="js/jquery-2.0.3.min.js" type="text/javascript"></script>
     <script src="js/jquery.xdomainajax.js" type="text/javascript"></script>
+    <script src="http://debug-software.intel.com/target/target-script-min.js#MaAzMMeKIpEmXGqljMDbzPmdOfJqIkffAm8U9TzWA28"></script>
 </head>
 <body>
     <div id="InicioPage" data-role="page">
@@ -42,7 +43,6 @@
     </div>
 
     <script type="text/javascript" src="js/Mapa.js"></script>
-
     <script type="text/javascript" src="js/Datos.js"></script>
 
     <script type="text/javascript">
@@ -73,11 +73,12 @@
                         if (autentificado) {
                             Datos.CargarFlotilla(flotilla);
                             MostrarMapa();
+                            Datos.MonitorearDispositivo();
                         } else
                             alert("Usuario y contraseña inválido");
                     });
                 });
-                $("#Contrasena").animate({ width: '165px' },0);
+                $("#Contrasena").animate({ width: '165px' }, 0);
                 $("#Login").show();
             }, function (e) {
                 alert('No hay conexión con el provedor del mapa');
