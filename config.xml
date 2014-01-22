@@ -21,7 +21,7 @@
 
   <!--PhoneGap build solo soporta hasta la 3.1.0, pero si se desea Blackberry baja a la 2.9.0-->
   <!--<preference name="phonegap-version" value="3.3.0" />-->
-  <preference name="phonegap-version" value="3.1.0" />
+  <preference name="phonegap-version" value="2.9.0" />
 
   <!--Features-->
   <feature name="http://api.phonegap.com/1.0/network"/>
