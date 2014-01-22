@@ -106,15 +106,19 @@
         });
     },
 
-    MonitorearDispositivo: function () {
+    MonitorearDispositivo: function (opciones) {
         var watchID = navigator.geolocation.watchPosition(
             function (position) {
                 if (Datos.pinDevice == null) {
                     Datos.pinDevice = Mapa.AgregarPin('<img src="img/Target.png" alt="Yo" />', position.coords.latitude, position.coords.longitude);
                 } else {
-                    Mapa.MoverPin(Datos.pinDevice);
+                    Mapa.MoverPin(Datos.pinDevice, position.coords.latitude, position.coords.longitude);
+                }
+                if (opciones != null) {
+                    if (opciones.Centrar) Mapa.Centrar(position.coords.latitude,position.coords.longitude);
                 }
             }, function (error) {
+                alert(error);
             }, { timeout: 30000 });
     }
 }
