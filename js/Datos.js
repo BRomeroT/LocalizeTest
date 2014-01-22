@@ -118,7 +118,7 @@
                     if (opciones.Centrar) Mapa.Centrar(position.coords.latitude,position.coords.longitude);
                 }
             }, function (error) {
-                alert(error);
+                //alert(error);
             }, { timeout: 30000 });
     }
 }
